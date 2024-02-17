@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import cors from "cors";
 import { createApp } from "./createApp.mjs";
 // import "./strategies/discord-strategy.mjs";
 import { config } from "dotenv";
@@ -14,6 +14,8 @@ mongoose
     console.log("error", err);
   });
 const app = createApp();
+
+app.use(cors());
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
