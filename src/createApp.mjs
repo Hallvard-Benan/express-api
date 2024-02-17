@@ -1,6 +1,7 @@
 import express from "express";
 import rootRoute from "./routes/index.mjs";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import mongoose from "mongoose";
@@ -25,6 +26,7 @@ export function createApp() {
       store: MongoStore.create({ client: mongoose.connection.getClient() }),
     })
   );
+  app.use(cors());
 
   app.use(passport.initialize());
   app.use(passport.session());
