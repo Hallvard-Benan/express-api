@@ -23,6 +23,7 @@ export function createApp() {
       cookie: {
         maxAge: 60000 * 60,
         sameSite: "none",
+        secure: "true",
       },
       store: MongoStore.create({ client: mongoose.connection.getClient() }),
     })
