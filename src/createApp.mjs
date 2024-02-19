@@ -22,6 +22,7 @@ export function createApp() {
       resave: false,
       cookie: {
         maxAge: 60000 * 60,
+        sameSite: "none",
       },
       store: MongoStore.create({ client: mongoose.connection.getClient() }),
     })
