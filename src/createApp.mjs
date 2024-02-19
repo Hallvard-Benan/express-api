@@ -30,7 +30,6 @@ export function createApp() {
   app.use(
     cors({
       credentials: true,
-      origin: ["http://localhost:5174", "https://devplatformsca.netlify.app"],
     })
   );
 
@@ -47,8 +46,6 @@ export function createApp() {
         console.log(err);
         throw err;
       }
-
-      console.log("Coming from the session data>>> ", sessionData);
     });
 
     res.send("hello ");
@@ -64,16 +61,5 @@ export function createApp() {
     res.sendStatus(200);
   });
 
-  app.get("/api/auth/discord", passport.authenticate("discord"));
-
-  app.get(
-    "/api/auth/discord/redirect",
-    passport.authenticate("discord"),
-    (req, res) => {
-      console.log(req.session);
-      console.log(req.user);
-      res.status(200).send("Successfully authenticated with discord");
-    }
-  );
   return app;
 }

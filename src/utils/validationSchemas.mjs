@@ -1,17 +1,3 @@
-export const reviewFilterValidationSchema = {
-  filter: {
-    isLength: {
-      options: { min: 5, max: 20 },
-      errorMessage: "Username must be bewteen 5 and 20 characters.",
-    },
-    notEmpty: { errorMessage: "Cannot be empty" },
-    isString: { errorMessage: "Must be a string" },
-  },
-  sortBy: {
-    notEmpty: { errorMessage: "cant be empty wth dude" },
-  },
-};
-
 export const createUserValidationSchema = {
   username: {
     isLength: {

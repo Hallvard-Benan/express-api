@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 import { createApp } from "./createApp.mjs";
-// import "./strategies/discord-strategy.mjs";
 import { config } from "dotenv";
 config({ path: ".env.local" });
 

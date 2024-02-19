@@ -1,5 +1,9 @@
 # API Documentation
 
+Base URL: `https://my-fantastic-server.onrender.com`
+
+\* Auth endpoints currently not working from browsers. Only from Postman
+
 ## Users Endpoints
 
 ### List all users
@@ -74,7 +78,7 @@
 - **DELETE** `/api/books/:id`
   - Removes the book with the specified ID from the database.
 
-## Authentication Endpoints
+## Authentication Endpoints \*
 
 ### User Login
 
