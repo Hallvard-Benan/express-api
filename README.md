@@ -1,49 +1,90 @@
-# API Documentation:
+# API Documentation
 
-This api has the following endpoints:
+## Users Endpoints
 
-Replace :id with the id of the data to
+### List all users
 
-## Users endpoints:
+- **GET** `/api/users`
+  - Returns a list of all users.
 
-### https://my-fantastic-server.onrender.com/api/users
+### Create a new user
 
-- GET: for a list of all users
-- POST: Send "displayName", "username" and "password" in the body of the request to create a new user.
+- **POST** `/api/users`
+  - Request Body:
+    - `displayName` (string): Display name of the user.
+    - `username` (string): Username of the user.
+    - `password` (string): Password of the user.
+  - Creates a new user with the provided details.
 
-### https://my-fantastic-server.onrender.com/api/users/:id
+### Get user by ID
 
-- GET: To get one specific user by their id
-- PUT: to update user details
-- DELETE: To remove a specific user from the database
+- **GET** `/api/users/:id`
+  - Returns the user with the specified ID.
 
-## Books endpoints:
+### Update user
 
-### https://my-fantastic-server.onrender.com/api/books
+- **PUT** `/api/users/:id`
+  - Request Body:
+    - `displayName` (string): Updated display name of the user.
+    - `username` (string): Updated username of the user.
+    - `password` (string): Updated password of the user.
+  - Updates the details of the user with the specified ID.
 
-- GET: Get all books
-- POST: Post a book with the following data: {
-  "title": string,
-  "author": string,
-  "pages": number,
-  "finished": boolean
-  }
+### Delete user
 
-### https://my-fantastic-server.onrender.com/api/books/:id
+- **DELETE** `/api/users/:id`
+  - Removes the user with the specified ID from the database.
 
-- GET: Get a specific book by id
-- PUT: Edit a specific book with same data types as in POST /books
-- PATCH: Edit a specific book with same data types as in POST /books
-- DELETE: Remove a specific book from the database
+## Books Endpoints
 
-## Auth endpoints
+### List all books
 
-- These endpoints are currently only working in Postman, not in browsers.
+- **GET** `/api/books`
+  - Returns a list of all books.
 
-### https://my-fantastic-server.onrender.com/api/auth/
+### Add a new book
 
-- POST: post username and password to an existing user to receive a session cookie that lasts for one hour.
+- **POST** `/api/books`
+  - Request Body:
+    - `title` (string): Title of the book.
+    - `author` (string): Author of the book.
+    - `pages` (number): Number of pages in the book.
+    - `finished` (boolean): Indicates whether the book is finished.
+  - Adds a new book with the provided details.
 
-### https://my-fantastic-server.onrender.com/api/auth/status/
+### Get book by ID
 
-- GET: If a valid session is sent with the request, the api responds with the user you are logged in as. Otherwise responds with 401
+- **GET** `/api/books/:id`
+  - Returns the book with the specified ID.
+
+### Update book
+
+- **PUT** `/api/books/:id`
+  - Request Body: Same as POST `/books`.
+  - Updates the details of the book with the specified ID.
+
+### Partially update book
+
+- **PATCH** `/api/books/:id`
+  - Request Body: Same as POST `/books`.
+  - Partially updates the details of the book with the specified ID.
+
+### Delete book
+
+- **DELETE** `/api/books/:id`
+  - Removes the book with the specified ID from the database.
+
+## Authentication Endpoints
+
+### User Login
+
+- **POST** `/api/auth/`
+  - Request Body:
+    - `username` (string): Username of the existing user.
+    - `password` (string): Password of the existing user.
+  - Logs in the user and returns a session cookie that lasts for one hour.
+
+### Check Authentication Status
+
+- **GET** `/api/auth/status/`
+  - If a valid session is sent with the request, the API responds with the user you are logged in as. Otherwise, responds with status code 401.
