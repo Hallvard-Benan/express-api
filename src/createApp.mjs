@@ -26,7 +26,12 @@ export function createApp() {
       store: MongoStore.create({ client: mongoose.connection.getClient() }),
     })
   );
-  app.use(cors());
+  app.use(
+    cors({
+      credentials: true,
+      origin: ["http://localhost:5174", "https://devplatformsca.netlify.app"],
+    })
+  );
 
   app.use(passport.initialize());
   app.use(passport.session());
